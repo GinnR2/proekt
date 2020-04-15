@@ -2,10 +2,28 @@ package ua.lviv.lgs.proekt.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "bucket")
 public class Bucket {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@ManyToOne(targetEntity = User.class)
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private Integer userId;
+	@ManyToOne(targetEntity = Periodical.class)
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private Integer productId;
+	@Column(name = "date")
 	private Date purchaseDate;
 
 	public Bucket() {

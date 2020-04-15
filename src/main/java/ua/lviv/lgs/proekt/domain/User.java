@@ -1,12 +1,52 @@
 package ua.lviv.lgs.proekt.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column
 	private String email;
+	@Column
 	private String name;
+	@Column
 	private String surname;
-	private UserRole role;
+	@Column
 	private String password;
+	@Column
+	private String confirm;
+	@Enumerated(EnumType.STRING)
+	private UserRole role;
+	
+	public User(User user) {
+		this.id = user.id;
+		this.email = user.email;
+		this.name = user.name;
+		this.surname = user.surname;
+		this.role = user.role;
+		this.password = user.password;
+	}
+	
+	public User() {}
+
+	public String getConfirm() {
+		return confirm;
+	}
+
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
+	}
+
 	public Integer getId() {
 		return id;
 	}
