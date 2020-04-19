@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Log in with your account</title>
+<title>Create a periodical</title>
+
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -39,22 +42,32 @@
 		  <a href="#" class="w3-bar-item w3-button">Bucket</a>
 		</div>
 		<button class="w3-button w3-xxlarge" onclick="w3_open()">&#9776;</button>
+	
 	<div class="container">
-		<form method="POST" action="${contextPath}/login" class="form-signin">
-			<h2 class="form-heading">Log in</h2><br>
-			<div class="form-group ${error != null ? 'has-error' : ''}">
-				<span>${message}</span><br>
-					<input name="email" type="text" class="form-control" placeholder="Email" autofocus="true" /><br>
-					<input name="password" type="password" class="form-control" placeholder="Password" /> <br>
-					<span>${error}</span> <br>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button><br>
-				<h4 class="text-center">
-					<a href="${contextPath}/registration">Create an account</a>
-				</h4>
-			</div>
-		</form>
+		<form:form method="POST" modelAttribute="periodicalForm" class="form-signin">
+        <h2 class="form-signin-heading">Create periodical</h2>
+        <spring:bind path="name">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="name" class="form-control" placeholder="Name" autofocus="true"></form:input>
+                <form:errors path="name"></form:errors>
+            </div>
+        </spring:bind>
+          <spring:bind path="description">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="description" class="form-control" placeholder="Description" autofocus="true"></form:input>
+                <form:errors path="description"></form:errors>
+            </div>
+        </spring:bind>
+		 <spring:bind path="price">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="price" class="form-control" placeholder="Price" autofocus="true"></form:input>
+                <form:errors path="price"></form:errors>
+            </div>
+        </spring:bind>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form:form>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 </body>
 </html>

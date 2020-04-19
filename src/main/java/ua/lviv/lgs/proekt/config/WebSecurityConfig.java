@@ -34,9 +34,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.permitAll()
 		.antMatchers("/home")
 			.access("hasRole('ROLE_USER')")
+		.antMatchers("/createEnt")
+			.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 		.anyRequest()
 			.permitAll()
 			.and()
+		
 		.formLogin()
 			.loginPage("/login")
 			.defaultSuccessUrl("/home")
