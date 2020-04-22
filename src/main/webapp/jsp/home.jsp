@@ -45,7 +45,7 @@
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+        <h2>Welcome <c:out value="${pageContext.request.userPrincipal.name}"/> | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
     </c:if>
     <div class="listbase">
     	<c:if test="${periodicals.size() == 0}">
@@ -56,9 +56,9 @@
     <c:forEach items="${periodicals}" var="item">
         <div class="card">
 		  <img src="${item.image == null ? '/img/NO_IMG_600x600.png' : item.image.getFileDownloadUri()}" alt="none" style="width:100%">
-		  <h1>${item.name}</h1>
+		  <h1><c:out value="${item.name}"/></h1>
 		  <p class="price">$${item.price}</p>
-		  <p>${item.description}</p>
+		  <p style="overflow: hidden; white-space: pre-line"><c:out value="${item.description}"/></p>
 		  <p><button>Add to Cart</button></p>
 		</div>
       </c:forEach>

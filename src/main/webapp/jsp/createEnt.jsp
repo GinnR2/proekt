@@ -51,7 +51,8 @@
 							<td><input type="text" name="name" class="form-control" placeholder="name"/></td>
 						</tr>
 						<tr>
-							<td><input type="text" name="description" class="form-control" placeholder="description"/></td>
+							<td><textarea name="description" class="form-control" placeholder="description" 
+							style="min-height: 96px; max-height: 96px; overflow-y: scroll; height: 96px;"/></textarea></td>
 						</tr>
 						<tr>
 							<td><input type="number" name="price" class="form-control" placeholder="price"/></td>

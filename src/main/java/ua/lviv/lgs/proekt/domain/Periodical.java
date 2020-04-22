@@ -19,7 +19,7 @@ public class Periodical {
 	private Integer id;
 	@Column
 	private String name;
-	@Column
+	@Column(columnDefinition="TEXT")
 	private String description;
 	@Column
 	private Double price;
