@@ -44,28 +44,29 @@
 		<button class="w3-button w3-xxlarge" onclick="w3_open()">&#9776;</button>
 	
 	<div class="container">
-		<form:form method="POST" modelAttribute="periodicalForm" class="form-signin">
-        <h2 class="form-signin-heading">Create periodical</h2>
-        <spring:bind path="name">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="name" class="form-control" placeholder="Name" autofocus="true"></form:input>
-                <form:errors path="name"></form:errors>
-            </div>
-        </spring:bind>
-          <spring:bind path="description">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="description" class="form-control" placeholder="Description" autofocus="true"></form:input>
-                <form:errors path="description"></form:errors>
-            </div>
-        </spring:bind>
-		 <spring:bind path="price">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="price" class="form-control" placeholder="Price" autofocus="true"></form:input>
-                <form:errors path="price"></form:errors>
-            </div>
-        </spring:bind>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </form:form>
+		<form:form method="POST" action="${contextPath}/createEnt" enctype="multipart/form-data" class="form-signin">
+					<h2 class="form-heading">Create periodical</h2><br>
+					<table class="form-group container">
+						<tr>
+							<td><input type="text" name="name" class="form-control" placeholder="name"/></td>
+						</tr>
+						<tr>
+							<td><input type="text" name="description" class="form-control" placeholder="description"/></td>
+						</tr>
+						<tr>
+							<td><input type="number" name="price" class="form-control" placeholder="price"/></td>
+						</tr>
+						<tr>
+							<td><input type="file" name="image" class="form-control" accept="image/jpeg,image/png,image/gif"/></td>
+						</tr>
+						<tr>
+							<td><input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block"/></td>
+						</tr>
+						<tr>
+							<td><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"  /></td>
+						</tr>
+					</table>	
+				</form:form>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 

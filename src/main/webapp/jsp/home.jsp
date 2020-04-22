@@ -55,7 +55,7 @@
     	</c:if>
     <c:forEach items="${periodicals}" var="item">
         <div class="card">
-		  <img src="img/NO_IMG_600x600.png" alt="none" style="width:100%">
+		  <img src="${item.image == null ? '/img/NO_IMG_600x600.png' : item.image.getFileDownloadUri()}" alt="none" style="width:100%">
 		  <h1>${item.name}</h1>
 		  <p class="price">$${item.price}</p>
 		  <p>${item.description}</p>

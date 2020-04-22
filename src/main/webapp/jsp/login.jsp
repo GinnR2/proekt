@@ -44,7 +44,7 @@
 			<h2 class="form-heading">Log in</h2><br>
 			<div class="form-group ${error != null ? 'has-error' : ''}">
 				<span>${message}</span><br>
-					<input name="email" type="text" class="form-control" placeholder="Email" autofocus="true" /><br>
+					<input name="email" type="text" class="form-control" placeholder="Email" /><br>
 					<input name="password" type="password" class="form-control" placeholder="Password" /> <br>
 					<span>${error}</span> <br>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
