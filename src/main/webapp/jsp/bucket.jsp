@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.stream.Stream" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,7 @@
 
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/css/index.css">
-	<link rel="stylesheet" href="/css/list.css">
+	<link rel="stylesheet" href="/css/table.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script type="text/javascript">
 		function w3_open() {
@@ -53,21 +54,40 @@
     <div class="listbase">
     	<c:if test="${periodicals.size() == 0}">
     			<h4 style="color: white;" class="text-center">Empty list
-					<a href="${contextPath}/createEnt">Add something</a>
+					<a href="${contextPath}/home">Add something</a>
 				</h4>
     	</c:if>
-    <c:forEach items="${periodicals}" var="item">
-        <div class="card">
-		  <img src="${item.image == null ? '/img/NO_IMG_600x600.png' : item.image.getFileDownloadUri()}" alt="none" style="width:100%">
-		  <h1><c:out value="${item.name}"/></h1>
-		  <p class="price">$${item.price}</p>
-		  <p style="overflow: hidden; white-space: pre-line"><c:out value="${item.description}"/></p>
-		  <form:form action="${contextPath}/bucketAdd" method="POST" enctype="multipart/form-data">
-				<input type="hidden" value="${item.id}" class="form-control" name="id"> 
-				<input type="submit" class="w3-button w3-block w3-dark-grey" value="+ add to bucket">
-		  </form:form>
-		</div>
-      </c:forEach>
+    	<table class="table table-striped">
+	    	<thead>
+				<tr>
+					<th>Image</th>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Purchase Date</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+						<c:forEach var="item" items="${bucket}">
+							<tr style="vertical-align:middle">
+								<td style="width: 10%"><img src="${item.periodical.image == null ? '/img/NO_IMG_600x600.png' : item.periodical.image.getFileDownloadUri()}" alt="image" style="width: 100%"></td>
+								<td style="vertical-align:middle">${item.id}</td>
+								<td style="vertical-align:middle"><c:out value="${item.periodical.name}"/></td>
+								<td style="vertical-align:middle">
+								<c:out value="${item.periodical.description.length()>50?item.periodical.description.substring(1,50):item.periodical.description}"/></td>
+								<td style="vertical-align:middle">${item.periodical.price}$</td>
+								<td style="vertical-align:middle">${item.purchaseDate}</td>
+								<td style="vertical-align:middle"><a href="bucketRemove?id= ${item.id}">delete</a></td>
+								
+							</tr>
+						</c:forEach>
+      		</tbody>
+      </table>
+     	
+      <h3 style="color: white;">Total ${bucket.size()} items - ${bucket.stream().map(x->x.periodical.price).sum()} $</h3>
+      
      </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

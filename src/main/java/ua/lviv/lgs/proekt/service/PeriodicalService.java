@@ -20,4 +20,8 @@ public class PeriodicalService {
 	public List<Periodical> getAll() {
 		return repo.findAll();
 	}
+	
+	public Periodical get(Integer id) {
+		return repo.findById(id).get();
+	}
 }

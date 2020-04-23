@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -39,13 +39,13 @@
 		  <button class="w3-bar-item w3-button" onclick="w3_close()" style="background:#f44">Close</button>
 		  <a href="/home" class="w3-bar-item w3-button">Home</a>
 		  <a href="/createEnt" class="w3-bar-item w3-button">Create Periodical</a>
-		  <a href="#" class="w3-bar-item w3-button">Bucket</a>
+		  <a href="/bucket" class="w3-bar-item w3-button">Bucket</a>
 		</div>
 		<button class="w3-button w3-xxlarge" onclick="w3_open()">&#9776;</button>
 	
 	<div class="container">
 		<form:form method="POST" action="${contextPath}/createEnt" enctype="multipart/form-data" class="form-signin">
-					<h2 class="form-heading">Create periodical</h2><br>
+					<h2 style="color: white;" class="form-heading">Create periodical</h2><br>
 					<table class="form-group container">
 						<tr>
 							<td><input type="text" name="name" class="form-control" placeholder="name"/></td>

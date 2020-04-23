@@ -36,12 +36,12 @@
 		  <button class="w3-bar-item w3-button" onclick="w3_close()" style="background:#f44">Close</button>
 		  <a href="/home" class="w3-bar-item w3-button">Home</a>
 		  <a href="/createEnt" class="w3-bar-item w3-button">Create Periodical</a>
-		  <a href="#" class="w3-bar-item w3-button">Bucket</a>
+		  <a href="/bucket" class="w3-bar-item w3-button">Bucket</a>
 		</div>
 		<button class="w3-button w3-xxlarge" onclick="w3_open()">&#9776;</button>
 	<div class="container">
 		<form method="POST" action="${contextPath}/login" class="form-signin">
-			<h2 class="form-heading">Log in</h2><br>
+			<h2 style="color: white;" class="form-heading">Log in</h2><br>
 			<div class="form-group ${error != null ? 'has-error' : ''}">
 				<span>${message}</span><br>
 					<input name="email" type="text" class="form-control" placeholder="Email" /><br>
@@ -50,7 +50,7 @@
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button><br>
 				<h4 class="text-center">
-					<a href="${contextPath}/registration">Create an account</a>
+					<a style="color: white;" href="${contextPath}/registration">Create an account</a>
 				</h4>
 			</div>
 		</form>

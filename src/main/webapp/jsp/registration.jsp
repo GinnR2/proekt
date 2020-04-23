@@ -39,13 +39,13 @@
 		  <button class="w3-bar-item w3-button" onclick="w3_close()" style="background:#f44">Close</button>
 		  <a href="/home" class="w3-bar-item w3-button">Home</a>
 		  <a href="/createEnt" class="w3-bar-item w3-button">Create Periodical</a>
-		  <a href="#" class="w3-bar-item w3-button">Bucket</a>
+		  <a href="/bucket" class="w3-bar-item w3-button">Bucket</a>
 		</div>
 		<button class="w3-button w3-xxlarge" onclick="w3_open()">&#9776;</button>
 <div class="container">
 
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
+        <h2 style="color: white;" class="form-signin-heading">Create your account</h2>
         <spring:bind path="name">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="name" class="form-control" placeholder="First name" autofocus="true"></form:input>
@@ -78,7 +78,7 @@
         </spring:bind>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         		<h4 class="text-center">
-					<a href="${contextPath}/login">Login</a>
+					<a style="color: white;" href="${contextPath}/login">Login</a>
 				</h4>
     </form:form>
 </div>

@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Not permitted</title>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="/css/index.css">
 	<script type="text/javascript">
 		function w3_open() {
 		  document.getElementById("mySidebar").style.display = "block";
@@ -23,12 +24,12 @@
 		  <button class="w3-bar-item w3-button" onclick="w3_close()" style="background:#f44">Close</button>
 		  <a href="/home" class="w3-bar-item w3-button">Home</a>
 		  <a href="/createEnt" class="w3-bar-item w3-button">Create Periodical</a>
-		  <a href="#" class="w3-bar-item w3-button">Bucket</a>
+		  <a href="/bucket" class="w3-bar-item w3-button">Bucket</a>
 		</div>
 		<button class="w3-button w3-xxlarge" onclick="w3_open()">&#9776;</button>
-	<div>
+	<div class="container">
 		<div>
-			<h3>You have no permission to access page!</h3>
+			<h3 style="color: white;">You have no permission to access page!</h3>
 		</div>
 		<form action="/logout" method="post">
 			<input type="submit" value="Sign in as different user" /> 

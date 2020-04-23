@@ -11,7 +11,7 @@ import ua.lviv.lgs.proekt.repository.UserRepo;
 @Service
 public class UserService{
     @Autowired
-    private UserRepo userRepo;
+    private UserRepo repo;
     @Autowired
     private PasswordEncoder bCryptPasswordEncoder;
 
@@ -19,6 +19,10 @@ public class UserService{
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setConfirm(bCryptPasswordEncoder.encode(user.getConfirm()));
         user.setRole(UserRole.ROLE_USER);
-        userRepo.save(user);
+        repo.save(user);
+    }
+    
+    public User getByEmail(String email) {
+    	return repo.findByEmail(email).get();
     }
 }
