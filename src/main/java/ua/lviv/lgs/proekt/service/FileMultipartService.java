@@ -3,6 +3,8 @@ package ua.lviv.lgs.proekt.service;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -13,6 +15,7 @@ import ua.lviv.lgs.proekt.repository.FileMultipartRepo;
 
 @Service
 public class FileMultipartService {
+	private Logger log = LoggerFactory.getLogger(FileMultipartService.class);
 	
 	@Autowired
 	private FileMultipartRepo repo;
@@ -24,13 +27,16 @@ public class FileMultipartService {
 		if (!fileName.contains("..")) {
 			multipart = new FileMultipart(fileName, file.getContentType(), file.getBytes());
 		}
-
-		return repo.save(multipart);
+		repo.save(multipart);
+		log.info("Saved file: "+multipart.getFileName());
+		return multipart;
 		
 	}
 	
-	public FileMultipart getFile(String fileId) throws FileNotFoundException {
-		return repo.findById(fileId).orElseThrow(() -> new FileNotFoundException("File not found with Id =" + fileId));
+	public FileMultipart getFile(String id) throws FileNotFoundException {
+		FileMultipart multipart = repo.findById(id).orElseThrow(() -> new FileNotFoundException("File not found with Id =" + id));
+		//log.info("Got file: "+multipart.getFileName());
+		return multipart;
 	}
 	
 	

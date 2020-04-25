@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -19,26 +20,11 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/css/index.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<script type="text/javascript">
-		function w3_open() {
-		  document.getElementById("mySidebar").style.display = "block";
-		}
-
-		function w3_close() {
-		  document.getElementById("mySidebar").style.display = "none";
-		}
-	</script>
+	
 </head>
 
 <body>
-		<!-- Sidebar -->
-		<div class="w3-sidebar w3-bar-block w3-gray w3-animate-left" style="display:none;z-index:4;" id="mySidebar">
-		  <button class="w3-bar-item w3-button" onclick="w3_close()" style="background:#f44">Close</button>
-		  <a href="/home" class="w3-bar-item w3-button">Home</a>
-		  <a href="/createEnt" class="w3-bar-item w3-button">Create Periodical</a>
-		  <a href="/bucket" class="w3-bar-item w3-button">Bucket</a>
-		</div>
-		<button class="w3-button w3-xxlarge" onclick="w3_open()">&#9776;</button>
+		<jsp:include page="sidebar.jsp"></jsp:include>
 	<div class="container">
 		<form method="POST" action="${contextPath}/login" class="form-signin">
 			<h2 style="color: white;" class="form-heading">Log in</h2><br>

@@ -21,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ua.lviv.lgs.proekt.domain.FileMultipart;
 import ua.lviv.lgs.proekt.domain.Periodical;
-import ua.lviv.lgs.proekt.dto.PeriodicalDto;
 import ua.lviv.lgs.proekt.service.FileMultipartService;
 import ua.lviv.lgs.proekt.service.PeriodicalService;
 
@@ -33,7 +32,7 @@ public class PeriodicalController {
     private PeriodicalService service;
     @RequestMapping(value = "/createEnt", method = {RequestMethod.GET})
     public String create(Model model) {
-        model.addAttribute("periodicalForm", new PeriodicalDto());
+        model.addAttribute("periodicalForm", new Periodical());
         return "createEnt";
     }
     @RequestMapping(value = "/createEnt", method = {RequestMethod.POST})
