@@ -50,7 +50,7 @@ public class PeriodicalController {
         service.save(periodical);
         return new ModelAndView("redirect:/home");
     }
-    @RequestMapping(value ="/home", method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView map = new ModelAndView("home");
 		map.addObject("periodicals", service.getAll());

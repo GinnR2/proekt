@@ -22,52 +22,61 @@
 
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/login.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	
 </head>
 
 <body>
 		<jsp:include page="sidebar.jsp"></jsp:include>
-<div class="container">
+	<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            
+                <form:form method="POST" modelAttribute="userForm" class="box">
+                    <h1>Register</h1>
+                    <p class="text-muted"> Please fill all fields!</p> 
+                    
+                    <spring:bind path="name">
+			            <div class="form-group ${status.error ? 'has-error' : ''}">
+			                <form:input type="text" path="name" placeholder="First name" required="true"></form:input>
+			                <form:errors style="color:#f00" path="name"></form:errors>
+			            </div>
+			        </spring:bind>
+			        <spring:bind path="surname">
+			            <div class="form-group ${status.error ? 'has-error' : ''}">
+			                <form:input type="text" path="surname" placeholder="Last name" required="true" ></form:input>
+			                <form:errors style="color:#f00" path="surname"></form:errors>
+			            </div>
+			        </spring:bind>
+			        <spring:bind path="email">
+			            <div class="form-group ${status.error ? 'has-error' : ''}">
+			                <form:input type="text" path="email" placeholder="Email" required="true"></form:input>
+			                <form:errors style="color:#f00" path="email"></form:errors>
+			            </div>
+			        </spring:bind>
+			        <spring:bind path="password">
+			            <div class="form-group ${status.error ? 'has-error' : ''}">
+			                <form:input type="password" path="password" placeholder="Password" class="pass" required="true"></form:input>
+			                <form:errors style="color:#f00" path="password"></form:errors>
+			            </div>
+			        </spring:bind>
+			        <spring:bind path="confirm">
+			            <div class="form-group ${status.error ? 'has-error' : ''}">
+			                <form:input type="password" path="confirm" placeholder="Confirm your password" class="cpass" required="true"></form:input>
+			                <form:errors style="color:#f00" path="confirm"></form:errors>
+			            </div>
+			        </spring:bind>
+                    
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <input type="submit" name="" value="Register">
+                    <a class="forgot text-muted" href="${contextPath}/login">Login</a>
+                </form:form>
+            
+        </div>
+    </div>
+	</div>
 
-    <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 style="color: white;" class="form-signin-heading">Create your account</h2>
-        <spring:bind path="name">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="name" class="form-control" placeholder="First name" autofocus="true"></form:input>
-                <form:errors path="name"></form:errors>
-            </div>
-        </spring:bind>
-          <spring:bind path="surname">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="surname" class="form-control" placeholder="Last name" autofocus="true"></form:input>
-                <form:errors path="surname"></form:errors>
-            </div>
-        </spring:bind>
-		 <spring:bind path="email">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="email" class="form-control" placeholder="Email" autofocus="true"></form:input>
-                <form:errors path="email"></form:errors>
-            </div>
-        </spring:bind>
-        <spring:bind path="password">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
-                <form:errors path="password"></form:errors>
-            </div>
-        </spring:bind>
-        <spring:bind path="confirm">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="confirm" class="form-control" placeholder="Confirm your password"></form:input>
-                <form:errors path="confirm"></form:errors>
-            </div>
-        </spring:bind>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-        		<h4 class="text-center">
-					<a style="color: white;" href="${contextPath}/login">Login</a>
-				</h4>
-    </form:form>
-</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </body>
