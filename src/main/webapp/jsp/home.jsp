@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -34,16 +33,17 @@
 	        <form id="logoutForm" method="POST" action="${contextPath}/logout">
 	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	        </form>
-	        <h2 style="color: white;">Welcome <c:out value="${pageContext.request.userPrincipal.name}"/> | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+	        <h2 style="color: white;"> <spring:message code="home.welcome" /> <c:out value="${pageContext.request.userPrincipal.name}"/> |
+	         <a onclick="document.forms['logoutForm'].submit()"> <spring:message code="home.logout" /> </a></h2>
 	    </c:if>
 	    <c:if test="${pageContext.request.userPrincipal.name == null}">
-	        <h2 style="color: white;">Hello guest: <a href="/registration">Register</a> or <a href="/login">Login</a></h2>
+	        <h2 style="color: white;"><spring:message code="home.hello" />: <a href="/login"> <spring:message code="home.login" /> </a></h2>
 	    </c:if>
 	    
 	    <div class="listbase">
 	    	<c:if test="${periodicals.size() == 0}">
-	    			<h4 style="color: white;" class="text-center">Empty list
-						<a href="${contextPath}/createEnt">Add something</a>
+	    			<h4 style="color: white;" class="text-center"><spring:message code="home.empty" />
+						<a href="${contextPath}/createEnt"> <spring:message code="side.create" /> </a>
 					</h4>
 	    	</c:if>
 	    <c:forEach items="${periodicals}" var="item">

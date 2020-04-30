@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -30,17 +29,17 @@
 		<jsp:include page="sidebar.jsp"></jsp:include>
 	<div class="container">
 		<form:form method="POST" action="${contextPath}/createEnt" enctype="multipart/form-data" class="form-signin">
-					<h2 style="color: white;" class="form-heading">Create periodical</h2><br>
+					<h2 style="color: white;" class="form-heading"> <spring:message code="create.create" /> </h2><br>
 					<table class="form-group container">
 						<tr>
-							<td><input type="text" name="name" class="form-control" placeholder="name"/></td>
+							<td><input type="text" name="name" class="form-control" placeholder="<spring:message code='form.name' />"/></td>
 						</tr>
 						<tr>
-							<td><textarea name="description" class="form-control" placeholder="description" 
+							<td><textarea name="description" class="form-control" placeholder="<spring:message code='form.desc' />" 
 							style="min-height: 96px; max-height: 96px; overflow-y: scroll; height: 96px;"/></textarea></td>
 						</tr>
 						<tr>
-							<td><input type="number" name="price" class="form-control" placeholder="price"/></td>
+							<td><input type="number" name="price" class="form-control" placeholder="<spring:message code='form.price' />"/></td>
 						</tr>
 						<tr>
 							<td><input type="file" name="image" class="form-control" accept="image/jpeg,image/png,image/gif"/></td>

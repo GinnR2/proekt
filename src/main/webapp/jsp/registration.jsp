@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -34,43 +34,48 @@
         <div class="col-md-6">
             
                 <form:form method="POST" modelAttribute="userForm" class="box">
-                    <h1>Register</h1>
-                    <p class="text-muted"> Please fill all fields!</p> 
+                    <h1> <spring:message code="register.register" /> </h1>
+                    
                     
                     <spring:bind path="name">
 			            <div class="form-group ${status.error ? 'has-error' : ''}">
-			                <form:input type="text" path="name" placeholder="First name" required="true"></form:input>
+			            	<spring:message code='form.name' var='iname'/>
+			                <form:input type="text" path="name" placeholder="${iname}" required="true" id="name"></form:input>
 			                <form:errors style="color:#f00" path="name"></form:errors>
 			            </div>
 			        </spring:bind>
 			        <spring:bind path="surname">
 			            <div class="form-group ${status.error ? 'has-error' : ''}">
-			                <form:input type="text" path="surname" placeholder="Last name" required="true" ></form:input>
+			            	<spring:message code='form.surname' var='isurname'/>
+			                <form:input type="text" path="surname" placeholder="${isurname}" required="true" id="surname"></form:input>
 			                <form:errors style="color:#f00" path="surname"></form:errors>
 			            </div>
 			        </spring:bind>
 			        <spring:bind path="email">
 			            <div class="form-group ${status.error ? 'has-error' : ''}">
-			                <form:input type="text" path="email" placeholder="Email" required="true"></form:input>
+			            	<spring:message code='form.email' var='iemail'/>
+			                <form:input type="text" path="email" placeholder="${iemail}" required="true" id="email"></form:input>
 			                <form:errors style="color:#f00" path="email"></form:errors>
 			            </div>
 			        </spring:bind>
 			        <spring:bind path="password">
 			            <div class="form-group ${status.error ? 'has-error' : ''}">
-			                <form:input type="password" path="password" placeholder="Password" class="pass" required="true"></form:input>
+			            	<spring:message code='form.password' var='ipass'/>
+			                <form:input type="password" path="password" placeholder="${ipass}" class="pass" required="true" id="pass"></form:input>
 			                <form:errors style="color:#f00" path="password"></form:errors>
 			            </div>
 			        </spring:bind>
 			        <spring:bind path="confirm">
 			            <div class="form-group ${status.error ? 'has-error' : ''}">
-			                <form:input type="password" path="confirm" placeholder="Confirm your password" class="cpass" required="true"></form:input>
+			            	<spring:message code='form.password' var='icpass'/>
+			                <form:input type="password" path="confirm" placeholder="${icpass}" class="cpass" required="true" id="cpass"></form:input>
 			                <form:errors style="color:#f00" path="confirm"></form:errors>
 			            </div>
 			        </spring:bind>
                     
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <input type="submit" name="" value="Register">
-                    <a class="forgot text-muted" href="${contextPath}/login">Login</a>
+                    <a class="forgot text-muted" href="${contextPath}/login"> <spring:message code="register.login" /> </a>
                 </form:form>
             
         </div>

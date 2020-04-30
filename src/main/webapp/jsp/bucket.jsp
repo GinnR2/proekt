@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -31,12 +30,16 @@
 <body>
 		<jsp:include page="sidebar.jsp"></jsp:include>
 <div class="container">
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
-        <h2 style="color: white;">Welcome <c:out value="${pageContext.request.userPrincipal.name}"/> | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
-    </c:if>
+    	<c:if test="${pageContext.request.userPrincipal.name != null}">
+	        <form id="logoutForm" method="POST" action="${contextPath}/logout">
+	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	        </form>
+	        <h2 style="color: white;"> <spring:message code="home.welcome" /> <c:out value="${pageContext.request.userPrincipal.name}"/> |
+	         <a onclick="document.forms['logoutForm'].submit()"> <spring:message code="home.logout" /> </a></h2>
+	    </c:if>
+	    <c:if test="${pageContext.request.userPrincipal.name == null}">
+	        <h2 style="color: white;"><spring:message code="home.hello" />: <a href="/login"> <spring:message code="home.login" /> </a></h2>
+	    </c:if>
     <div class="listbase">
     	<c:if test="${periodicals.size() == 0}">
     			<h4 style="color: white;" class="text-center">Empty list
@@ -72,7 +75,7 @@
       		</tbody>
       </table>
      	
-      <h3 style="color: white;">Total ${bucket.size()} items - ${bucket.stream().map(x->x.periodical.price).sum()} $</h3>
+      <h3 style="color: white;"><spring:message code="bucket.total" /> ${bucket.size()} <spring:message code="bucket.items" /> - ${bucket.stream().map(x->x.periodical.price).sum()} $</h3>
       
      </div>
 </div>
