@@ -27,6 +27,24 @@ public class Periodical {
 	@JoinColumn(name = "img_id", referencedColumnName = "id")
 	private FileMultipart image;
 	
+	
+	
+	public Periodical(String name, String description, Double price, FileMultipart image) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.image = image;
+	}
+	public Periodical(String name, String description, Double price) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+	}
+	public Periodical() {
+		super();
+	}
 	public FileMultipart getImage() {
 		return image;
 	}

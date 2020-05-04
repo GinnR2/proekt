@@ -39,6 +39,29 @@ public class User {
 	
 	public User() {}
 
+	
+	
+	public User(String email, String name, String surname, String password, String confirm) {
+		super();
+		this.email = email;
+		this.name = name;
+		this.surname = surname;
+		this.password = password;
+		this.confirm = confirm;
+	}
+	
+	
+
+	public User(String email, String name, String surname, String password, String confirm, UserRole role) {
+		super();
+		this.email = email;
+		this.name = name;
+		this.surname = surname;
+		this.password = password;
+		this.confirm = confirm;
+		this.role = role;
+	}
+
 	public String getConfirm() {
 		return confirm;
 	}
