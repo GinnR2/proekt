@@ -34,7 +34,7 @@
         <div class="col-md-6">
             
                 <form:form method="POST" modelAttribute="userForm" class="box">
-                    <h1> <spring:message code="register.register" /> </h1>
+                    <h1> <spring:message code="register.register" var="ireg"/> ${ireg} </h1>
                     
                     
                     <spring:bind path="name">
@@ -74,7 +74,7 @@
 			        </spring:bind>
                     
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                    <input type="submit" name="" value="Register">
+                    <input type="submit" name="" value="${ireg}">
                     <a class="forgot text-muted" href="${contextPath}/login"> <spring:message code="register.login" /> </a>
                 </form:form>
             

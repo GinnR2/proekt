@@ -1,4 +1,6 @@
 package ua.lviv.lgs.proekt.service;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +30,12 @@ public class UserService{
     }
     
     public User getByEmail(String email) {
-    	User u = repo.findByEmail(email).get();
+    	Optional<User> u = repo.findByEmail(email);
+    	
+    	if (!u.isPresent()) return null;
+    	User u2 = u.get();
     	log.info("Got " + u);
     	
-    	return u;
+    	return u2;
     }
 }

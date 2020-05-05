@@ -28,6 +28,7 @@ public class UserController {
     	String email = bindingResult.getFieldValue("email").toString();
     	String password = bindingResult.getFieldValue("password").toString();
     	String confirm = bindingResult.getFieldValue("confirm").toString();
+
     	if (bindingResult.hasErrors()) {
             return "registration";
         }
@@ -42,7 +43,7 @@ public class UserController {
         	return "registration";
         }
         userService.save(userForm);
-        return "redirect:/home";
+        return "redirect:/login";
     }
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {

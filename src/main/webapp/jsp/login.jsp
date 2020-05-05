@@ -45,7 +45,7 @@
 	                    <br>
 	                    <a class="forgot text-muted" href="#"> <spring:message code="login.forgot" /> </a> 
 	                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	                    <input type="submit" name="" value="Login">
+	                    <input type="submit" name="" value="<spring:message code="login.login" />">
                     </div>
                     <a class="forgot text-muted" href="${contextPath}/registration"> <spring:message code="login.registration" /> </a>
                 </form>

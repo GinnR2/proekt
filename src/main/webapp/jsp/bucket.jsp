@@ -49,13 +49,13 @@
     	<table class="table table-striped">
 	    	<thead>
 				<tr>
-					<th>Image</th>
-					<th>Id</th>
-					<th>Name</th>
-					<th>Description</th>
-					<th>Price</th>
-					<th>Purchase Date</th>
-					<th>Action</th>
+					<th><spring:message code="bucket.image" /></th>
+					<th><spring:message code="bucket.id" /></th>
+					<th><spring:message code="bucket.name" /></th>
+					<th><spring:message code="bucket.desc" /></th>
+					<th><spring:message code="bucket.price" /></th>
+					<th><spring:message code="bucket.date" /></th>
+					<th><spring:message code="bucket.action" /></th>
 				</tr>
 			</thead>
 			<tbody>
